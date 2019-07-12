@@ -35,7 +35,7 @@
     method: POST
     #force_basic_auth: yes
     validate_certs: no
-    when: "User * doesn't already exist"
+    when: "User 'student{{ item }}' doesn't already exist"
 
 
 - name: "Grant CREATE_CONNECTION Permissions to student{{item}}"
