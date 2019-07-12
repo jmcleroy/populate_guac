@@ -26,7 +26,6 @@
     dest: "{{ playbook_dir }}/users.json"
   delegate_to: localhost
 
-
 - name: "Add User student{{item}}"
   uri:
     url: "https://{{ guacamole_server }}/guacamole/api/session/data/mysql/users?token={{ admin_auth_token }}"
@@ -36,6 +35,8 @@
     method: POST
     #force_basic_auth: yes
     validate_certs: no
+    when: "User * doesn't already exist"
+
 
 - name: "Grant CREATE_CONNECTION Permissions to student{{item}}"
   uri:
